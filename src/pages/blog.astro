@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import BlogPost from '../components/BlogPost.astro';
 
 const allPosts = Object.values(import.meta.glob('./posts/*.md', {eager:true} ));
 ---
@@ -12,7 +13,7 @@ const allPosts = Object.values(import.meta.glob('./posts/*.md', {eager:true} ));
           
         <p>This is where I will post about my journey learning Astrovan.</p>
         <ul>
-            {allPosts.map((post:any) => <li><a href={post.url}>{post.frontmatter.title}</a></li> )}
+            {allPosts.map((post:any) => <BlogPost url={post.url} title={post.frontmatter.title} /> )}
         </ul>
       </body>
 </Layout>
